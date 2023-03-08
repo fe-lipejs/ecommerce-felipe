@@ -36,7 +36,7 @@
     </div>
 
     <div id="login">
-      <router-link to="/login">
+      <router-link to="/carrinho">
         <svg
           width="20"
           height="20"
@@ -85,7 +85,7 @@
         </svg>
       </div>
 
-      <a href="/home"> <div class="mobile-menu-item">INÍCIO</div></a>
+      <a href="/"> <div class="mobile-menu-item">INÍCIO</div></a>
       <a href="/categoria"><div class="mobile-menu-item">MASCULINO</div></a>
       <a href="/categoria"> <div class="mobile-menu-item">FEMININO</div></a>
       <a href="/login"> <div class="mobile-menu-item">LOGIN</div></a>
@@ -94,7 +94,7 @@
 </template>
 <style scoped>
 .mobile-menu-container {
-  position: absolute;
+  position: fixed;
   margin-top: -20px;
   background-color: white;
   width: 100%;
@@ -102,7 +102,7 @@
   text-align: left;
   transform: translateX(-100%);
   transition: ease-in-out 0.5s;
-  z-index: 1;
+  z-index: 100;
 }
 .mobile-menu-item {
   margin: 20px;
@@ -120,6 +120,9 @@
   font-weight: 400;
 }
 #navbar {
+  position: fixed;
+  z-index: 1;
+  top: 0;
   display: flex;
   justify-content: space-between;
   width: 100%;

@@ -4,7 +4,7 @@
         <div ref="dot1" class="dot1 dot"></div>
         <div ref="dot2" class="dot2 dot "></div>
         <div ref="dot3" class="dot3 dot"></div>
-        <div ref="dot4" class="dot4 dot "></div>
+        <div ref="dot4" class="dot4 dot dotted"></div>
     </div>
     <div class="slider" v-on:touchstart="handleToqueInicial" v-on:touchmove="handleToqueMovimento"
         v-on:touchend="handleToqueFinal">

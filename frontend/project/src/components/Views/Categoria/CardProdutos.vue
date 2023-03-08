@@ -1,17 +1,23 @@
 <template>
-  <div id="produto-container">
-    <div id="produto-img"></div>
-    <div id="produto-nome">Moto G52</div>
-    <div id="preco-container">
-      <div id="preco-old">R$ 199,90</div>
-      <div id="preco-new">R$ 139,90</div>
+  <a href="/produto">
+    <div id="produto-container">
+      <div id="produto-img"></div>
+      <div id="produto-nome">Moto G52</div>
+      <div id="preco-container">
+        <div id="preco-old">R$ 199,90</div>
+        <div id="preco-new">R$ 139,90</div>
+      </div>
+      <div id="preco-parcelas">6X de R$23,32*</div>
     </div>
-    <div id="preco-parcelas">6X de R$23,32*</div>
-  </div>
+  </a>
   <!-- <div id="produtos-divisao"></div> -->
 </template>
 
 <style scoped>
+a{
+  text-decoration: none;
+  color: #000;
+}
 #produto-container {
   margin: 40px;
   display: flex;
