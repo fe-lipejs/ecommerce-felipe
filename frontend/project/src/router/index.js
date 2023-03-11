@@ -5,6 +5,8 @@ import Categoria from "@/components/Views/Categoria/Categoria.vue"
 import Carrinho from "@/components/Views/Carrinho/Carrinho.vue"
 import Produto from "@/components/Views/Produto/Produto.vue"
 import Informacoes from "@/components/Views/Informacoes/Informacoes.vue"
+import Frete from "@/components/Views/Frete/Frete.vue"
+import Pagamento from "@/components/Views/Pagamento/Pagamento.vue"
 
 const routes = [
   {
@@ -36,6 +38,16 @@ const routes = [
     path: "/informacoes",
     name: "informacoes",
     component: Informacoes
+  },
+  {
+    path: "/pagamento",
+    name: "pagamento",
+    component: Pagamento
+  },
+  {
+    path: "/Frete",
+    name: "Frete",
+    component: Frete
   }
 ];
 
