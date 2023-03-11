@@ -4,6 +4,7 @@ import Login from "@/components/Views/Login";
 import Categoria from "@/components/Views/Categoria/Categoria.vue"
 import Carrinho from "@/components/Views/Carrinho/Carrinho.vue"
 import Produto from "@/components/Views/Produto/Produto.vue"
+import Informacoes from "@/components/Views/Informacoes/Informacoes.vue"
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/produto",
     name: "Produto",
     component: Produto
+  },
+  {
+    path: "/informacoes",
+    name: "informacoes",
+    component: Informacoes
   }
 ];
 

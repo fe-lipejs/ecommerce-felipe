@@ -12,7 +12,14 @@
   </a>
   <!-- <div id="produtos-divisao"></div> -->
 </template>
-
+<script>
+export default {
+  props:{
+        height: String,
+        width: String,
+    },
+}
+</script>
 <style scoped>
 a{
   text-decoration: none;

@@ -76,11 +76,6 @@
     </div>
   </div>
 
-  <!-- BOTÃO COMPRAR -->
-  <div id="button-comprar">
-    <div>COMPRAR</div>
-  </div>
-
   <!-- PREÇO -->
   <div id="preco-container">
     <div id="preco-container-valor">R$179,90</div>
@@ -112,32 +107,74 @@
     </div>
   </div>
 
+  <!-- FRETE -->
+  <div id="frete-container">
+    <div id="inserir-container">
+      <div>INSERIR CEP</div>
+      <input maxlength="8" type="text" name="" id="" />
+    </div>
+    <div id="frete-button" ref="content">CALCULAR FRETE</div>
+  </div>
   <!-- DESCRIÇÃO -->
   <div id="desc-container">
     <div>DESCRIÇÃO DO PRODUTO</div>
-    <div>Após reorganização interna para melhor refletir o estilo dos nossos clientes, ficamos felizes em anunciar que a Preston Field foi incorporada pela Marfinno, que agora também contará com um segmento especial ("Marfinno Social"). Nessa fase de transição, é possível que você receba produtos com o nome antigo da marca. Não se preocupe, os produtos permanecem os mesmos e todas as referências já estão em processo de atualização pelo nosso time. Agradecemos pela compreensão e estamos à disposição para esclarecer quaisquer dúvidas</div>
+    <div>
+      Após reorganização interna para melhor refletir o estilo dos nossos
+      clientes, ficamos felizes em anunciar que a Preston Field foi incorporada
+      pela Marfinno, que agora também contará com um segmento especial
+      ("Marfinno Social"). Nessa fase de transição, é possível que você receba
+      produtos com o nome antigo da marca. Não se preocupe, os produtos
+      permanecem os mesmos e todas as referências já estão em processo de
+      atualização pelo nosso time. Agradecemos pela compreensão e estamos à
+      disposição para esclarecer quaisquer dúvidas
+    </div>
   </div>
-
-  <!-- TEMPORÁRIO, NO FUTURO SERÁ UM COMPONENT APENAS: -->
-  <div id="rodape-container">
-    <div>Início</div>
-    <div>Produtos</div>
-    <div>Contato</div>
-  </div>
-  <div id="rodape-container2">
-    <div>Copyright Felipe Produções - 2023</div>
-    <div>Todos os Direitos Reservados</div>
-  </div>
+  <!-- BOTÃO COMPRAR -->
+  <a href="/informacoes"><div
+    id="button-comprar"
+    class="buttonMovendo"
+    :class="{ buttonParado: buttonParado }"
+  >
+    <div>COMPRAR</div>
+  </div></a>
+  <VejaTambem/>
+ 
 </template>
 <script>
-export default {};
+import VejaTambem from '@/components/VejaTambem.vue';
+export default {
+    components:{
+        VejaTambem
+    },
+  data() {
+    return {
+      buttonParado: false,
+    };
+  },
+  // Os códigos abaixo determina até que ponto da tela
+  // o botão comprar deverá parar de mover no scroll
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      const content = this.$refs.content;
+      const posicaoContentTop = content.offsetTop;
+      const posicaoScrollPagina = window.pageYOffset;
+
+      this.buttonParado = posicaoScrollPagina > posicaoContentTop;
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 #prod-espe {
   margin: 10px;
-  margin-top:70px ;
+  margin-top: 70px;
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
@@ -205,23 +242,35 @@ export default {};
   margin-left: 3px;
 }
 
+/* BOTÃO COMRRAR */
 #button-comprar {
-/* Em uma determinada parte da tela ele deirará de ser fixo */
-  position: fixed;
+  /* Em uma determinada parte da tela ele deirará de ser fixo */
+
   height: 60px;
   width: 100%;
-  background-color: #3acda1;
   display: flex;
   justify-content: center;
   align-items: center;
   bottom: 0;
-
   cursor: pointer;
 }
 #button-comprar div {
   font-weight: 550;
   font-size: 20px;
   color: #fff;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.buttonMovendo {
+  position: fixed;
+  background-color: #3bcba0;
+}
+.buttonParado {
+  margin-top: 70px;
+  position: relative;
 }
 @font-face {
   font-family: "Berkshire Swash";
@@ -230,122 +279,126 @@ export default {};
   font-style: normal;
 }
 #preco-container-valor {
-    font-family: 'Berkshire Swash';
-    font-size: 32px;
+  font-family: "Berkshire Swash";
+  font-size: 32px;
 }
-#preco-container div{
-    margin: 10px;
+#preco-container div {
+  margin: 10px;
 }
 /* Cores */
-#cor-container-texto{
-    display: flex;
-    margin: 5px;
+#cor-container-texto {
+  display: flex;
+  margin: 5px;
 }
-#cor-container-texto div{
-    margin-top: 10px;
-    margin-bottom: 10px;
+#cor-container-texto div {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-#cor-container-texto div:nth-child(1){
-    color: grey;
+#cor-container-texto div:nth-child(1) {
+  color: grey;
 }
-#cor-container-texto div:nth-child(2){
-    font-weight: bolder;
-    margin-left: 5px;
+#cor-container-texto div:nth-child(2) {
+  font-weight: bolder;
+  margin-left: 5px;
 }
 
-#cor-container-cores{
-    display: flex;
-    align-items: center;
+#cor-container-cores {
+  display: flex;
+  align-items: center;
 }
-#cor-container-cores div{
-    height: 37px;
-    width: 37px;
-    background-color: black;
-    border-radius: 100%;
-    margin-right:10px;
+#cor-container-cores div {
+  height: 37px;
+  width: 37px;
+  background-color: black;
+  border-radius: 100%;
+  margin-right: 10px;
 }
-#cor-container-cores div:nth-child(2){
-background-color: rgb(49, 85, 140);
-border: 2px solid #fff;
-outline: 2px solid black;
-height: 35px;
-width: 35px;
-    
+#cor-container-cores div:nth-child(2) {
+  background-color: rgb(49, 85, 140);
+  border: 2px solid #fff;
+  outline: 2px solid black;
+  height: 35px;
+  width: 35px;
 }
-#cor-container-cores div:nth-child(3){
-background-color: rgb(140, 49, 49);
+#cor-container-cores div:nth-child(3) {
+  background-color: rgb(140, 49, 49);
 }
 /* TAMANHO */
-#tamanho-container-texto{
-    margin-left: 10px;
+#tamanho-container-texto {
+  margin-left: 10px;
 }
-#tamanho-container-tamanhos{
-    display: flex;
-    margin: 5px;
+#tamanho-container-tamanhos {
+  display: flex;
+  margin: 5px;
 }
-#tamanho-container-tamanhos div{
- margin-left: 10px;
- height: 42px;
- width: 42px;
- display: flex;
- justify-content: center;
- align-items: center;
- border: 1px #989898 solid;
+#tamanho-container-tamanhos div {
+  margin-left: 10px;
+  height: 42px;
+  width: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px #989898 solid;
 }
-#tamanho-container-tamanhos div:nth-child(3){
-    background-color: #000;
-    border: 2px #000 solid;
-    color:#fff;
-    font-weight: 500;
+#tamanho-container-tamanhos div:nth-child(3) {
+  background-color: #000;
+  border: 2px #000 solid;
+  color: #fff;
+  font-weight: 500;
 }
-#tamanho-container-tamanhos div:nth-child(){}
+#tamanho-container-tamanhos div:nth-child() {
+}
+/* FRETE */
 
+#frete-container {
+  margin-top: 50px;
+  display: flex;
+  height: 73px;
+  border-top: 1px solid #e3e3e3;
+  border-bottom: 1px solid #e3e3e3;
+  align-items: center;
+  justify-content: space-around;
+}
+#inserir-container div {
+  font-size: 12px;
+  position: relative;
+}
+#inserir-container input {
+  padding-top: 3px;
+  height: 25px;
+  font-size: 15px;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+#inserir-container input:focus {
+  outline: none;
+}
+#frete-button {
+  display: flex;
+  font-size: 13px;
+  color: #fff;
+  background-color: #000;
+  height: 42px;
+  align-items: center;
+  padding-inline: 30px;
+  cursor: pointer;
+}
 /* DESCRIÇÃO */
 
-#desc-container{
-    margin-top: 50px;  
+#desc-container {
+  margin-top: 50px;
 }
-#desc-container div{
-    margin: 10px;
+#desc-container div {
+  margin: 10px;
 }
-#desc-container div:nth-child(1){
-    font-size: 24px;
-    font-weight: 600;
+#desc-container div:nth-child(1) {
+  font-size: 24px;
+  font-weight: 600;
 }
-#desc-container div:nth-child(2){
-    color: #626262;
-    margin-top: 20px;
-    font-size: 20px;
-}
-
-/* TEMPORÁRIO: */
-#rodape-container{
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    background-color: #eeee;
-    height: 180px;
-    margin-bottom: -15px;
-}
-#rodape-container div{
-    font-size: 22px;
-    color: #4E4C4C;
-    padding: 7px;
-}
-#rodape-container2{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    background-color: #000;
-    height: 80px;
-}
-#rodape-container2 div{
-    font-size: 14px;
-    color: #f9f9f9;
-    padding: 7px;
+#desc-container div:nth-child(2) {
+  color: #626262;
+  margin-top: 20px;
+  font-size: 20px;
 }
 
 </style>

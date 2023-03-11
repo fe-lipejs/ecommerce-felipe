@@ -11,6 +11,7 @@
   <body>
     <router-view />
   </body>
+  <Rodape/>
 </template>
 <style>
 * {
@@ -23,10 +24,12 @@ body {
 </style>
 <script>
 import NavBar from "./components/NavBar.vue";
+import Rodape from "./components/Rodape.vue"
 export default {
   name: "App",
   components: {
     NavBar,
+    Rodape,
   },
 };
 </script>
